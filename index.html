@@ -163,7 +163,13 @@ canvas.bgfx{position:absolute;inset:0;width:100%;height:100%}
   .frag{opacity:1 !important;transform:none !important}
   .hook span,#hookSub,.imp-row{opacity:1 !important;filter:none !important;transform:none !important;animation:none !important}
   #hud,#timer,#notes,#help{display:none !important}
+  .qnr{animation:none !important}
 }
+.qnr{display:inline-flex;align-items:center;gap:16px;margin-top:46px;padding:16px 32px 17px;border-radius:999px;font:700 34px/1 var(--disp);letter-spacing:.005em;color:#EAF0FA;
+  background:linear-gradient(90deg,rgba(255,122,61,.16),rgba(46,230,197,.13),rgba(139,124,255,.18));border:1.5px solid rgba(46,230,197,.55);
+  box-shadow:0 0 22px rgba(46,230,197,.22),0 0 52px rgba(139,124,255,.14);animation:qnrGlow 2.8s ease-in-out infinite}
+.qnr i{width:12px;height:12px;border-radius:50%;background:#2EE6C5;box-shadow:0 0 14px #2EE6C5}
+@keyframes qnrGlow{50%{box-shadow:0 0 34px rgba(46,230,197,.42),0 0 80px rgba(139,124,255,.26);border-color:rgba(46,230,197,.85)}}
 </style>
 </head>
 <body>
@@ -507,62 +513,27 @@ canvas.bgfx{position:absolute;inset:0;width:100%;height:100%}
 </section>
 
 <section class="slide" data-block="close" data-title="Feuille de route" id="s-road">
-  <div class="kicker">Et ensuite</div>
-  <h2>D'un banc <span class="grad">à une zone industrielle</span>.</h2>
-  <svg id="roadSvg" viewBox="0 0 1420 500" style="width:100%;height:auto"></svg>
-  <aside class="notes">[Mayssam, 25 s] Aujourd'hui, le banc. Le 12 décembre, la finale TSYP : optimisation distribuée entre usines, IA embarquée sur le microcontrôleur, chaîne logicielle signée. Ensuite, une zone industrielle entière qui partage chaleur et froid, avec une preuve publique.</aside>
+  <div class="kicker">Prochaines étapes</div>
+  <h2>Du banc au terrain : <span class="grad">nos trois prochaines étapes</span>.</h2>
+  <svg id="roadSvg" viewBox="0 0 1420 540" style="width:100%;height:auto"></svg>
+  <aside class="notes">[Mayssam, 20 s] Trois prochaines étapes. Un : un réseau de neurones sur graphe, pour mieux prévoir les échanges de chaleur et de froid entre machines. Deux : la maintenance prédictive machine par machine, pour voir les dérives avant la panne. Trois : trouver des industriels pilotes, prêts à tester notre solution, pour collecter des données réelles et passer de la simulation à des gains mesurés.</aside>
 </section>
 
 <section class="slide" data-block="close" data-title="Merci" id="s-end">
   <canvas class="bgfx" id="flowB" width="1600" height="900"></canvas>
   <div style="position:relative">
-    <div class="kicker" style="color:#FFB547;margin-top:90px">Merci</div>
+    <div class="kicker" style="color:#FFB547;margin-top:90px">Merci pour votre attention</div>
     <h1 style="font-size:84px;line-height:1.08;margin-top:10px">À 15 h, votre froid ne coûte<br>plus le prix fort.<br><span style="background:linear-gradient(90deg,#FF7A3D,#2EE6C5 50%,#8B7CFF);-webkit-background-clip:text;background-clip:text;color:transparent">Et vous pouvez le prouver.</span></h1>
     <p style="font-size:26px;margin-top:22px;color:#9AA7BF"><span style="color:#FF7A3D">Réutiliser</span> la chaleur · <span style="color:#2EE6C5">la décaler</span> dans le temps · <span style="color:#8B7CFF">le prouver</span></p>
     <div style="display:flex;gap:14px;margin-top:40px">
       <span class="chip" style="--acc:#FF7A3D">Ons Sassi</span><span class="chip" style="--acc:#2EE6C5">Youssef El Mhamdi</span><span class="chip" style="--acc:#8B7CFF">Mayssam Hergli</span><span class="chip" style="--acc:#9AA7BF">Mohamed Amin Haffouz</span>
     </div>
+    <div class="qnr"><i></i>Questions &amp; réponses</div>
   </div>
-  <p style="position:absolute;left:90px;bottom:60px;font-size:18px;color:var(--tx3)">ARGONAUTS · INSAT · Makeathon Africa 2026 · Questions ?</p>
-  <aside class="notes">[Tous] Reprendre la question du début en miroir : « À 15 h, votre froid ne coûte plus le prix fort. Et vous pouvez le prouver. » Merci, nous sommes prêts pour vos questions. Les diapositives suivantes sont des réponses préparées, à ouvrir seulement si la question tombe.</aside>
+  <p style="position:absolute;left:90px;bottom:60px;font-size:18px;color:var(--tx3)">ARGONAUTS · INSAT · Makeathon Africa 2026</p>
+  <aside class="notes">[Mayssam] Reprendre la question du début en miroir : « À 15 h, votre froid ne coûte plus le prix fort. Et vous pouvez le prouver. » Merci pour votre attention. Nous sommes prêts pour vos questions.</aside>
 </section>
 
-<section class="slide" data-block="energy" data-title="Q&R — Énergie">
-  <div class="kicker">Annexe · questions probables</div><h2 style="font-size:44px">Énergie</h2>
-  <div class="qa">
-    <div class="glass"><b>Un Peltier a un COP terrible.</b><span>C'est un émulateur : la loi du chiller (COP 0,6–0,8 constructeur) est appliquée en logiciel. Il valide l'architecture, pas la thermique ; sa dynamique est plus rapide.</span></div>
-    <div class="glass"><b>Pourquoi l'absorption, si son COP est faible ?</b><span>Sa source est gratuite (chaleur perdue) et on choisit le moment. Le gain vient du combustible et de la pointe évités.</span></div>
-    <div class="glass"><b>Vos secteurs sont hors CBAM.</b><span>Oui : ciment, acier, aluminium, engrais, électricité, hydrogène. Notre preuve est neutre par secteur et sert ISO 50001 et les exigences clients.</span></div>
-    <div class="glass"><b>D'où viennent vos chiffres d'impact ?</b><span>De simulation, avec hypothèses explicites (taille d'usine, prix du gaz, tarif STEG, profil). Aucun chiffre industriel mesuré n'est revendiqué.</span></div>
-    <div class="glass"><b>Pourquoi 55 °C et pas 75 °C ?</b><span>Banc à échelle réduite, protégé à 60 °C : températures mises à l'échelle (seuil de froid à 45 °C).</span></div>
-    <div class="glass"><b>Comment mesurez-vous le tuyau ?</b><span>Q = ṁ · c_p · ΔT : débitmètre et deux sondes à chaque extrémité, intégré par période.</span></div>
-  </div>
-  <aside class="notes">Réponses préparées pour Ons.</aside>
-</section>
-<section class="slide" data-block="ai" data-title="Q&R — IA">
-  <div class="kicker">Annexe · questions probables</div><h2 style="font-size:44px">Intelligence</h2>
-  <div class="qa">
-    <div class="glass"><b>Où est l'IA ?</b><span>Optimisation sous contraintes (MPC, MILP) et estimation qui apprend en ligne (Kalman + RLS sur les pertes et le Peltier). Un GRU est entraîné sur GPU mais pas encore branché.</span></div>
-    <div class="glass"><b>Que prévoyez-vous, sur quel horizon ?</b><span>En démo : températures ambiantes par persistance sur 3 h. GRU de demande de froid (2 h) en test : RMSE 5,9 W contre 11,4 W en persistance, données synthétiques.</span></div>
-    <div class="glass"><b>Combien gagnez-vous ?</b><span>Simulation 24 h : −21 % d'électricité à confort égal, idem avec un tarif plat (ce n'est pas un effet du tarif). Pas encore mesuré sur le rig réel.</span></div>
-    <div class="glass"><b>Quel solveur, quel temps ?</b><span>HiGHS, MILP : une binaire par pas pour le verrou Peltier. Médiane 0,55 s, max 0,87 s sur 288 décisions, arrêt à 1 % d'optimalité.</span></div>
-    <div class="glass"><b>Et si l'optimiseur se trompe ?</b><span>55 °C dur dans le MPC, coupure STM32 à 59 °C, thermostat KSD301 à 60 °C (matériel). Toute consigne est bornée à 0..1.</span></div>
-    <div class="glass"><b>Comment détectez-vous une dérive ?</b><span>Jumeau comparé au réel grandeur par grandeur, seuil fixe (2 °C, 25 W, 0,3 L/min). CUSUM pour les dérives lentes : prochaine étape.</span></div>
-  </div>
-  <aside class="notes">Réponses préparées pour Youssef. Le prix est un tarif hypothèse (PLACEHOLDER), les coûts n'ont de sens qu'en relatif. Le code a été écrit avec un assistant de code IA, sous la direction de Youssef : à assumer si on le demande.</aside>
-</section>
-<section class="slide" data-block="trust" data-title="Q&R — Confiance">
-  <div class="kicker">Annexe · questions probables</div><h2 style="font-size:44px">Confiance</h2>
-  <div class="qa">
-    <div class="glass"><b>Une blockchain, c'est lent et cher.</b><span>Seule une empreinte de 32 octets est ancrée. Finalité 3–5 s. 0,0008 $ par message : ≈ 28 $/an par flux à 15 min.</span></div>
-    <div class="glass"><b>C'est du zero-knowledge ?</b><span>Non : un engagement par hachage. On peut prouver un enregistrement par un chemin de Merkle sans révéler les autres.</span></div>
-    <div class="glass"><b>Un capteur faux fait certifier du faux.</b><span>La preuve garantit l'intégrité après mesure. Contre-mesures : étalonnage, double comptage du tuyau, jumeau, vérificateur accrédité.</span></div>
-    <div class="glass"><b>Qui garantit la clé publique ?</b><span>Un registre des clés publié sur Hedera à la mise en service ; chaque clé est liée à ses machines.</span></div>
-    <div class="glass"><b>Et si Hedera est injoignable ?</b><span>Les racines sont mises en file et ancrées plus tard avec leur période d'origine (testé).</span></div>
-    <div class="glass"><b>Et si on vole la carte ?</b><span>Démarrage sécurisé + chiffrement flash ou élément sécurisé ATECC608A ; révocation dans le registre.</span></div>
-  </div>
-  <aside class="notes">Réponses préparées pour Mayssam.</aside>
-</section>
 
 </div></div>
 <div id="hud"><div id="bar"></div></div><div id="timer"></div><div id="notes"></div>
@@ -904,14 +875,26 @@ flowField('flowA','s-title');flowField('flowB','s-end');
 
 /* ===== Roadmap ===== */
 (function(){const svg=document.getElementById('roadSvg');const defs=E('defs',{},svg);const G=glow(defs,6);
-  const g=E('linearGradient',{id:'rdl',x1:0,y1:0,x2:1,y2:0},defs);E('stop',{offset:0,'stop-color':'#FF7A3D'},g);E('stop',{offset:.5,'stop-color':'#2EE6C5'},g);E('stop',{offset:1,'stop-color':'#8B7CFF'},g);
-  E('path',{d:'M60,110 L1360,110',stroke:'url(#rdl)','stroke-width':5,filter:G},svg);
-  const M=[[200,'AUJOURD\'HUI','Makeathon · banc 3 nœuds','#FF7A3D',['Chaîne de preuve complète','MPC (MILP) sur rig simulé','AAS / OPC UA']],[710,'12 DÉC. 2026','Finale TSYP14 · IEEE IAS','#2EE6C5',['Firmware STM32 + vraies cartes','Prévision GRU · CUSUM','ADMM : multi-usines']],[1220,'ENSUITE','Zone industrielle','#8B7CFF',['Politique distillée sur STM32','Règlement prouvé entre usines','Tarif STEG réel · GNN']]];
-  const pul=[];M.forEach(([x,d,t,c,items])=>{E('circle',{cx:x,cy:110,r:22,fill:'#060A13',stroke:c,'stroke-width':4,filter:G},svg);pul.push(E('circle',{cx:x,cy:110,r:9,fill:c},svg));
-    E('text',{x,y:62,'text-anchor':'middle','font-size':16,'font-weight':800,fill:c,'letter-spacing':'3'},svg,d);
-    const bx=x-200;E('rect',{x:bx,y:160,width:400,height:300,rx:20,fill:'rgba(255,255,255,.05)',stroke:'rgba(255,255,255,.12)'},svg);E('line',{x1:bx+30,x2:bx+370,y1:160,y2:160,stroke:c,'stroke-width':2},svg);
-    E('text',{x:bx+30,y:212,'font-size':26,'font-weight':700,fill:'#EAF0FA','font-family':'Space Grotesk'},svg,t);
-    items.forEach((it,j)=>{E('circle',{cx:bx+38,cy:262+j*60,r:5,fill:c},svg);E('text',{x:bx+56,y:268+j*60,'font-size':20,fill:'#C6D0E2'},svg,it);});});
+  const g=E('linearGradient',{id:'rdl',gradientUnits:'userSpaceOnUse',x1:60,y1:0,x2:1360,y2:0},defs);E('stop',{offset:0,'stop-color':'#FF7A3D'},g);E('stop',{offset:.5,'stop-color':'#2EE6C5'},g);E('stop',{offset:1,'stop-color':'#8B7CFF'},g);
+  const lf=E('filter',{id:'rdlGlow',filterUnits:'userSpaceOnUse',x:0,y:70,width:1420,height:80},defs);E('feGaussianBlur',{stdDeviation:6,result:'b'},lf);const lm=E('feMerge',{},lf);E('feMergeNode',{in:'b'},lm);E('feMergeNode',{in:'SourceGraphic'},lm);
+  E('path',{d:'M60,110 L1360,110',stroke:'url(#rdl)','stroke-width':5,filter:'url(#rdlGlow)'},svg);
+  const M=[[230,'IA','Mieux prévoir les échanges entre machines','#FF7A3D',['Réseau de neurones sur graphe (GNN)','Le réseau d\'usines vu comme un graphe : machines = nœuds, tuyaux = liens','Prévoir les flux de chaleur et de froid entre machines']],
+           [710,'MAINTENANCE','Maintenance prédictive par nœud','#2EE6C5',['Suivre la santé de chaque machine (pertes, COP, vibrations)','Détecter les dérives lentes avant la panne','Planifier l\'entretien au lieu de le subir']],
+           [1190,'TERRAIN','Des industriels pilotes','#8B7CFF',['Trouver des usines prêtes à tester la solution','Collecter des données réelles pour entraîner et valider nos modèles','Passer de la simulation à des gains mesurés']]];
+  const W=440,TW=W-60,BW=W-56-28;const cx=document.createElement('canvas').getContext('2d');
+  function wrap(s,font,max){cx.font=font;const L=[];let l='';s.replace(/ ([:;?!])/g,' $1').split(' ').forEach(w=>{const t=l?l+' '+w:w;if(l&&cx.measureText(t).width>max){L.push(l);l=w;}else l=t;});if(l)L.push(l);return L;}
+  function fitWrap(list,font,sizes,max,maxLines){for(const fs of sizes){const r=list.map(s=>wrap(s,font(fs),max));if(r.every(x=>x.length<=maxLines))return[fs,r];}const fs=sizes[sizes.length-1];return[fs,list.map(s=>wrap(s,font(fs),max))];}
+  const lay=E('g',{},svg);let pul=[];
+  function build(){lay.textContent='';pul=[];
+    const bfs=fitWrap(M.flatMap(m=>m[4]),fs=>'400 '+fs+'px Inter',[19,18,17],BW,2)[0];
+    M.forEach(([x,d,t,c,items])=>{E('circle',{cx:x,cy:110,r:22,fill:'#060A13',stroke:c,'stroke-width':4,filter:G},lay);pul.push(E('circle',{cx:x,cy:110,r:9,fill:c},lay));
+      E('text',{x,y:62,'text-anchor':'middle','font-size':16,'font-weight':800,fill:c,'letter-spacing':'3'},lay,d);
+      const bx=x-W/2;E('rect',{x:bx,y:160,width:W,height:350,rx:20,fill:'rgba(255,255,255,.05)',stroke:'rgba(255,255,255,.12)'},lay);E('line',{x1:bx+30,x2:bx+W-30,y1:160,y2:160,stroke:c,'stroke-width':2},lay);
+      const [tfs,[tl]]=fitWrap([t],fs=>'700 '+fs+'px "Space Grotesk"',[26,25,24],TW,2);
+      tl.forEach((l,k)=>E('text',{x:bx+30,y:214+k*32,'font-size':tfs,'font-weight':700,fill:'#EAF0FA','font-family':'Space Grotesk'},lay,l));
+      const bl=items.map(s=>wrap(s,'400 '+bfs+'px Inter',BW));let y=304;
+      bl.forEach(lines=>{E('circle',{cx:bx+38,cy:y-6,r:5,fill:c},lay);lines.forEach((l,k)=>E('text',{x:bx+56,y:y+k*25,'font-size':bfs,fill:'#C6D0E2'},lay,l));y+=lines.length*25+20;});});}
+  build();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(build);
   anims['s-road']=t=>{pul.forEach((p,i)=>p.setAttribute('r',9+3*Math.sin(t/300+i)));};})();
 
 const start=parseInt((location.hash||'#1').slice(1),10)-1;slides[0].classList.add('active');show(isNaN(start)?0:start,false);
